@@ -1,7 +1,7 @@
 package catolicasc.estruturadedados.sortalgorithms;
 /**
  * Ordena usando o método da inserção
- * @author udesc
+ * @author Glauco Vinicius Scheffel
  */
 public class InsertionSortStrategy extends AbstractSortStrategy {
 	/**

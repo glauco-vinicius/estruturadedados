@@ -3,7 +3,7 @@ package catolicasc.estruturadedados.sortalgorithms;
 /**
  * Implementa a lógica que deve ser usada pelas classes que realizam as trocas
  * procura diminuir a redundãncia no código
- * @author udesc
+ * @author Glauco Vinicius Scheffel
  *
  */
 abstract class AbstractSortStrategy implements IStrategy {
@@ -51,5 +51,4 @@ abstract class AbstractSortStrategy implements IStrategy {
 				System.out.println(j);
 			}
 		}
-
 }

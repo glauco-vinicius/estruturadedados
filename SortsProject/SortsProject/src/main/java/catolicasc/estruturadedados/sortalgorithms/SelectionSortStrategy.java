@@ -1,7 +1,7 @@
 package catolicasc.estruturadedados.sortalgorithms;
 /**
  * Ordena usando o método da seleção
- * @author udesc
+ * @author Glauco Vinicius Scheffel
  */
 public class SelectionSortStrategy extends AbstractSortStrategy {
 	/**
@@ -13,7 +13,6 @@ public class SelectionSortStrategy extends AbstractSortStrategy {
         int tamanho = elementos.length;
         int ultimaPosição =tamanho-1;
         int min,max;
-        System.out.println("tamanho: " +tamanho);
         for(int i=0;i<tamanho;i++) {
         	min=i;
         	for(int j=i+1;j<tamanho;j++) {

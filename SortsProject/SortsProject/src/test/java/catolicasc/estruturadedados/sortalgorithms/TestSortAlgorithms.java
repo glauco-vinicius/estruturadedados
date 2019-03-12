@@ -20,7 +20,12 @@ import org.junit.runner.RunWith;
 
 /**
  * Unit test for sort methods using Strategy as technique for separation of
- * concerns
+ * concerns.
+ * 
+ * O programa de testes usa o modelo de testes parametrizáveis do JUnit para
+ * que a lógica de teste seja mais simples.
+ * 
+ * @author Glauco Vinicius Scheffel
  */
 
 @RunWith(Parameterized.class)

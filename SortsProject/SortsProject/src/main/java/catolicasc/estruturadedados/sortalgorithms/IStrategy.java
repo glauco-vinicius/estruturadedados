@@ -1,5 +1,9 @@
 package catolicasc.estruturadedados.sortalgorithms;
 
+/**
+ * Interface implementada pelos algoritmos de ordenação
+ * @author Glauco Vinicius Scheffel
+ */
 public interface IStrategy {
 	   /**
 	    * Realiza a ordenação
@@ -14,6 +18,5 @@ public interface IStrategy {
 	    * Registra os elementos que serão ordenados
 	    * @param elements
 	    */
-       public void setElements(int[] elements);
-		
+       public void setElements(int[] elements);		
 }

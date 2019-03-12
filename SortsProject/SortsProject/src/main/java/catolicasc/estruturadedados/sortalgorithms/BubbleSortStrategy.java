@@ -1,7 +1,7 @@
 package catolicasc.estruturadedados.sortalgorithms;
 /**
  * Ordena usando o método da bolha
- * @author udesc
+ * @author Glauco Vinicius Scheffel
  */
 public class BubbleSortStrategy extends AbstractSortStrategy {
 	/**
@@ -27,6 +27,4 @@ public class BubbleSortStrategy extends AbstractSortStrategy {
 	public String toString() {
 		return "BubbleSortStrategy";
 	}
-	
-	
 }

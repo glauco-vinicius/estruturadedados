@@ -2,7 +2,7 @@ package catolicasc.estruturadedados.sortalgorithms;
 
 /**
  * Associado a uma ação de interface ou de negócio realiza a ordenação
- * @author udesc
+ * @author Glauco Vinicius Scheffel
  *
  */
 public class StrategyCommand {

@@ -30,7 +30,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Parameterized.class)
 public final class TestSortAlgorithms extends TestCase {
-	final static int SIZE = 160000;
+	final static int SIZE = 340000;
 	final static int[] data = new int[SIZE];
 	
 	@Parameter  
@@ -50,12 +50,18 @@ public final class TestSortAlgorithms extends TestCase {
 	public static Collection<Object[]> data() {
 		return Arrays.asList(new Object[][] 
 		    {
-				{ new BubbleSortStrategy(), 10000 }, { new BubbleSortStrategy(), 20000 }, 
-				{ new BubbleSortStrategy(), 40000 }, { new BubbleSortStrategy(), 80000 },{ new BubbleSortStrategy(), SIZE },
-				{ new SelectionSortStrategy(), 10000 }, { new SelectionSortStrategy(), 20000 }, 
-				{ new SelectionSortStrategy(), 40000 }, { new SelectionSortStrategy(), 80000 },{ new SelectionSortStrategy(), SIZE },
-				{ new InsertionSortStrategy(), 10000 }, { new InsertionSortStrategy(), 20000 }, 
-				{ new InsertionSortStrategy(), 40000 }, { new InsertionSortStrategy(), 80000 },{ new InsertionSortStrategy(), SIZE },
+			{ new InsertionSortStrategy(), 20000 }, { new InsertionSortStrategy(), 40000 }, 
+			{ new InsertionSortStrategy(), 80000 }, { new InsertionSortStrategy(), 160000 },{ new InsertionSortStrategy(), SIZE },
+				{ new BubbleSortStrategy(), 20000 }, { new BubbleSortStrategy(), 40000 }, 
+				{ new BubbleSortStrategy(), 80000 }, { new BubbleSortStrategy(), 160000 },{ new BubbleSortStrategy(), SIZE },
+				{ new SelectionSortStrategy(), 20000 }, { new SelectionSortStrategy(), 40000 }, 
+				{ new SelectionSortStrategy(), 80000 }, { new SelectionSortStrategy(), 160000 },{ new SelectionSortStrategy(), SIZE },
+				{ new ShellSortStrategy(), 20000 }, { new ShellSortStrategy(), 40000 }, 
+				{ new ShellSortStrategy(), 80000 }, { new ShellSortStrategy(), 160000 },{ new ShellSortStrategy(), SIZE },				
+				{ new HeapSortStrategy(), 20000 }, { new HeapSortStrategy(), 40000 }, 
+				{ new HeapSortStrategy(), 80000 }, { new HeapSortStrategy(), 160000 },{ new HeapSortStrategy(), SIZE },
+				{ new QuickSortStrategy(), 20000 }, { new QuickSortStrategy(), 40000 }, 
+				{ new QuickSortStrategy(), 80000 }, { new QuickSortStrategy(), 160000 },{ new QuickSortStrategy(), SIZE },				
 			});
 	}
 
@@ -66,7 +72,6 @@ public final class TestSortAlgorithms extends TestCase {
 	 * @return
 	 */
 	private boolean isSorted(int elements[]) {
-
 		for (int i = 0; i < elements.length - 1; i++) {
 			int j = elements[i];
 			boolean cond = (j <= elements[i + 1]);

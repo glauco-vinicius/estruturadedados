@@ -19,7 +19,7 @@ public class QuickSortStrategy extends AbstractSortStrategy {
 		iterativeQsort(data);
 	}
 
-	private  int partition(int[] input, int position, int start, int end) {
+	private int partition(int[] input, int position, int start, int end) {
 		int l = start;
 		int h = end - 2;
 		int piv = input[position];
@@ -54,15 +54,15 @@ public class QuickSortStrategy extends AbstractSortStrategy {
 		while (!stack.isEmpty()) {
 			int end = stack.pop();
 			int start = stack.pop();
-			if (end - start < 2) {
-				continue;
+			if (end - start > 2) {
+
+				int p = start + ((end - start) / 2);
+				p = partition(numbers, p, start, end);
+				stack.push(p + 1);
+				stack.push(end);
+				stack.push(start);
+				stack.push(p);
 			}
-			int p = start + ((end - start) / 2);
-			p = partition(numbers, p, start, end);
-			stack.push(p + 1);
-			stack.push(end);
-			stack.push(start);
-			stack.push(p);
 		}
 	}
 

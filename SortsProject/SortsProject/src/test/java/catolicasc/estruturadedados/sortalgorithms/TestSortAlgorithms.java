@@ -1,10 +1,10 @@
 package catolicasc.estruturadedados.sortalgorithms;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 import junit.framework.TestCase;
 
 import org.junit.runners.Parameterized;
@@ -40,20 +40,6 @@ public final class TestSortAlgorithms extends TestCase {
 	@Parameter(1)
 	public int tamanho;
 
-	static {
-		try {
-			SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
-			sr.generateSeed(8);
-			Arrays.stream(data).forEach(
-				(e) -> {
-							e =  sr.nextInt(); 
-					   }
-				);
-		} catch (NoSuchAlgorithmException e) {
-			System.out.println("Exception thrown : " + e);
-		}
-
-	}
 
 	@Parameters(name = "{index}: algoritmo {0}({1})")
 	public static Collection<Object[]> data() {
@@ -66,10 +52,21 @@ public final class TestSortAlgorithms extends TestCase {
 		strategies[4] = new HeapSortStrategy();
 		strategies[5] = new MergeSortStrategy();
 		strategies[6] = new QuickSortStrategy();
+		
+		List<Integer> list = new ArrayList<>();
+		for (int i = 0; i <= SIZE; i++)
+			list.add(i);
+		Collections.shuffle(list);
+		
+		for (int i = 0; i < data.length; i++) {
+			data[i] = list.get(i).intValue();
+		}
+		
+		
 		int value = 80000;
-		while( value <= SIZE  ) {
+		while (value <= SIZE) {
 			for (int i = 0; i < strategies.length; i++) {
-				Object o[] = {strategies[i],value};
+				Object o[] = { strategies[i], value };
 				tests.add(o);
 			}
 			value *= 2;

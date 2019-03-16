@@ -1,7 +1,6 @@
 package catolicasc.estruturadedados.sortalgorithms;
 
 import java.util.ArrayDeque;
-import java.util.Stack;
 
 /**
  * Ordena usando o método quicksort
@@ -12,6 +11,8 @@ import java.util.Stack;
  * 
  * http://www.java67.com/2014/07/quicksort-algorithm-in-java-in-place-example.html
  * 
+ * https://algs4.cs.princeton.edu/23quicksort/Quick3way.java.html
+ * 
  * @author Glauco Vinicius Scheffel
  */
 public class QuickSortStrategy extends AbstractSortStrategy {
@@ -21,6 +22,7 @@ public class QuickSortStrategy extends AbstractSortStrategy {
 	@Override
 	public void sort() {
 		final int[] data = this.getElements();
+		// Na versão anterior foi usada um Stack
 		final ArrayDeque<Integer> stack = new ArrayDeque<Integer>();
 		stack.push(0);
 		stack.push(data.length);

@@ -1,5 +1,6 @@
 package catolicasc.estruturadedados.sortalgorithms;
 
+import java.util.ArrayDeque;
 import java.util.Stack;
 
 /**
@@ -15,11 +16,25 @@ public class QuickSortStrategy extends AbstractSortStrategy {
 	 */
 	@Override
 	public void sort() {
-		int[] data = this.getElements();
-		iterativeQsort(data);
+		final int[] data = this.getElements();
+		final ArrayDeque<Integer> stack = new ArrayDeque<Integer>();
+		stack.push(0);
+		stack.push(data.length);
+		while (! stack.isEmpty()) {
+			int end = stack.pop();
+			int start = stack.pop();
+			if (end - start >= 2) {
+				int p = start + ((end - start) / 2);
+				p = partition(data, p, start, end);
+				stack.push(p + 1);
+				stack.push(end);
+				stack.push(start);
+				stack.push(p);
+			}
+		}
 	}
 
-	private int partition(int[] input, int position, int start, int end) {
+	private final int partition(final int[] input, final int position, final int start, final int end) {
 		int l = start;
 		int h = end - 2;
 		int piv = input[position];
@@ -41,29 +56,10 @@ public class QuickSortStrategy extends AbstractSortStrategy {
 		return idx;
 	}
 
-	private void swap(int[] arr, int i, int j) {
+	private final void swap(int[] arr, int i, int j) {
 		int temp = arr[i];
 		arr[i] = arr[j];
 		arr[j] = temp;
-	}
-
-	public void iterativeQsort(int[] numbers) {
-		Stack<Integer> stack = new Stack<Integer>();
-		stack.push(0);
-		stack.push(numbers.length);
-		while (!stack.isEmpty()) {
-			int end = stack.pop();
-			int start = stack.pop();
-			if (end - start > 2) {
-
-				int p = start + ((end - start) / 2);
-				p = partition(numbers, p, start, end);
-				stack.push(p + 1);
-				stack.push(end);
-				stack.push(start);
-				stack.push(p);
-			}
-		}
 	}
 
 	@Override

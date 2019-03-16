@@ -1,8 +1,12 @@
 package catolicasc.estruturadedados.sortalgorithms;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Random;
+import java.util.LinkedList;
+import java.util.List;
 
 import junit.framework.TestCase;
 
@@ -22,8 +26,8 @@ import org.junit.runner.RunWith;
  * Unit test for sort methods using Strategy as technique for separation of
  * concerns.
  * 
- * O programa de testes usa o modelo de testes parametrizáveis do JUnit para
- * que a lógica de teste seja mais simples.
+ * O programa de testes usa o modelo de testes parametrizáveis do JUnit para que
+ * a lógica de teste seja mais simples.
  * 
  * @author Glauco Vinicius Scheffel
  */
@@ -32,37 +36,47 @@ import org.junit.runner.RunWith;
 public final class TestSortAlgorithms extends TestCase {
 	final static int SIZE = 340000;
 	final static int[] data = new int[SIZE];
-	
-	@Parameter  
+
+	@Parameter
 	public IStrategy strategy;
 
-    @Parameter(1)
-    public int tamanho;
-	
+	@Parameter(1)
+	public int tamanho;
+
 	static {
-		Random rnd = new Random();
-		for (int i = 0; i < SIZE; i++) {
-			data[i] = rnd.nextInt();
+		try {
+			SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
+			sr.generateSeed(8);
+			Arrays.stream(data).forEach(
+				(e) -> {
+							e =  sr.nextInt(); 
+					   }
+				);
+		} catch (NoSuchAlgorithmException e) {
+			System.out.println("Exception thrown : " + e);
 		}
+
 	}
-	
+
 	@Parameters(name = "{index}: algoritmo {0}({1})")
 	public static Collection<Object[]> data() {
-		return Arrays.asList(new Object[][] 
-		    {
-			{ new InsertionSortStrategy(), 20000 }, { new InsertionSortStrategy(), 40000 }, 
-			{ new InsertionSortStrategy(), 80000 }, { new InsertionSortStrategy(), 160000 },{ new InsertionSortStrategy(), SIZE },
-				{ new BubbleSortStrategy(), 20000 }, { new BubbleSortStrategy(), 40000 }, 
-				{ new BubbleSortStrategy(), 80000 }, { new BubbleSortStrategy(), 160000 },{ new BubbleSortStrategy(), SIZE },
-				{ new SelectionSortStrategy(), 20000 }, { new SelectionSortStrategy(), 40000 }, 
-				{ new SelectionSortStrategy(), 80000 }, { new SelectionSortStrategy(), 160000 },{ new SelectionSortStrategy(), SIZE },
-				{ new ShellSortStrategy(), 20000 }, { new ShellSortStrategy(), 40000 }, 
-				{ new ShellSortStrategy(), 80000 }, { new ShellSortStrategy(), 160000 },{ new ShellSortStrategy(), SIZE },				
-				{ new HeapSortStrategy(), 20000 }, { new HeapSortStrategy(), 40000 }, 
-				{ new HeapSortStrategy(), 80000 }, { new HeapSortStrategy(), 160000 },{ new HeapSortStrategy(), SIZE },
-				{ new QuickSortStrategy(), 20000 }, { new QuickSortStrategy(), 40000 }, 
-				{ new QuickSortStrategy(), 80000 }, { new QuickSortStrategy(), 160000 },{ new QuickSortStrategy(), SIZE },				
-			});
+		Collection<Object[]> tests = new ArrayList<Object[]>();
+		IStrategy strategies[] = new IStrategy[6];
+		strategies[0] = new BubbleSortStrategy();
+		strategies[1] = new HeapSortStrategy();
+		strategies[2] = new InsertionSortStrategy();
+		strategies[3] = new SelectionSortStrategy();
+		strategies[4] = new ShellSortStrategy();
+		strategies[5] = new QuickSortStrategy();
+		int value = 40000;
+		while( value <= SIZE  ) {
+			for (int i = 0; i < strategies.length; i++) {
+				Object o[] = {strategies[i],value};
+				tests.add(o);
+			}
+			value *= 2;
+		}
+		return tests;
 	}
 
 	/**
@@ -83,7 +97,9 @@ public final class TestSortAlgorithms extends TestCase {
 	}
 
 	/**
-	 * Organiza os elementos de acordo com o tamanho especificado e o algoritmo escolhido
+	 * Organiza os elementos de acordo com o tamanho especificado e o algoritmo
+	 * escolhido
+	 * 
 	 * @param strategy
 	 * @param elements
 	 * @return

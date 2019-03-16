@@ -4,6 +4,9 @@ import java.util.Arrays;
 
 /**
  * Ordena usando a ordenação do Java na classe Arrays
+ * 
+ * http://hg.openjdk.java.net/jdk8u/jdk8u/jdk/file/be44bff34df4/src/share/classes/java/util/Arrays.java
+ * 
  * @author Glauco Vinicius Scheffel
  */
 public class JavaSortStrategy extends AbstractSortStrategy {

@@ -34,7 +34,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Parameterized.class)
 public final class TestSortAlgorithms extends TestCase {
-	final static int SIZE = 340000;
+	final static int SIZE = 680000;
 	final static int[] data = new int[SIZE];
 
 	@Parameter
@@ -61,14 +61,15 @@ public final class TestSortAlgorithms extends TestCase {
 	@Parameters(name = "{index}: algoritmo {0}({1})")
 	public static Collection<Object[]> data() {
 		Collection<Object[]> tests = new ArrayList<Object[]>();
-		IStrategy strategies[] = new IStrategy[6];
+		IStrategy strategies[] = new IStrategy[7];
 		strategies[0] = new BubbleSortStrategy();
-		strategies[1] = new HeapSortStrategy();
-		strategies[2] = new InsertionSortStrategy();
-		strategies[3] = new SelectionSortStrategy();
-		strategies[4] = new ShellSortStrategy();
-		strategies[5] = new QuickSortStrategy();
-		int value = 40000;
+		strategies[1] = new SelectionSortStrategy();
+		strategies[2] = new ShellSortStrategy();
+		strategies[3] = new InsertionSortStrategy();
+		strategies[4] = new HeapSortStrategy();
+		strategies[5] = new MergeSortStrategy();
+		strategies[6] = new QuickSortStrategy();
+		int value = 80000;
 		while( value <= SIZE  ) {
 			for (int i = 0; i < strategies.length; i++) {
 				Object o[] = {strategies[i],value};

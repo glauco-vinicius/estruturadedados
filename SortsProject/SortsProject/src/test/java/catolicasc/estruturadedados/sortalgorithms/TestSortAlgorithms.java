@@ -41,10 +41,14 @@ public final class TestSortAlgorithms extends TestCase {
 	public int tamanho;
 
 
+	/**
+	 * Cria a lista de algoritmos e o conjunto de valores que devem ser testados
+	 * @return
+	 */
 	@Parameters(name = "{index}: algoritmo {0}({1})")
 	public static Collection<Object[]> data() {
 		Collection<Object[]> tests = new ArrayList<Object[]>();
-		IStrategy strategies[] = new IStrategy[7];
+		IStrategy strategies[] = new IStrategy[9];
 		strategies[0] = new BubbleSortStrategy();
 		strategies[1] = new SelectionSortStrategy();
 		strategies[2] = new ShellSortStrategy();
@@ -52,6 +56,8 @@ public final class TestSortAlgorithms extends TestCase {
 		strategies[4] = new HeapSortStrategy();
 		strategies[5] = new MergeSortStrategy();
 		strategies[6] = new QuickSortStrategy();
+		strategies[7] = new JavaParallelSortStrategy();
+		strategies[8] = new JavaSortStrategy();
 		
 		List<Integer> list = new ArrayList<>();
 		for (int i = 0; i <= SIZE; i++)
@@ -106,7 +112,7 @@ public final class TestSortAlgorithms extends TestCase {
 	}
 
 	/**
-	 * Verifica se o BubbleSort foi executado corretamente
+	 * Verifica se o algoritmo parametrizado foi executado corretamente
 	 */
 	@org.junit.Test
 	public void testSortAlgorithms() {

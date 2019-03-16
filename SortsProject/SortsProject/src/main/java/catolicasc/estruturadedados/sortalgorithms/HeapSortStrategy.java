@@ -29,7 +29,7 @@ public class HeapSortStrategy extends AbstractSortStrategy {
 		}
 	}
 
-	private void heapify(int elementos[], int n, int i) {
+	private final void heapify(final int elementos[], final int n, final int i) {
 		int largest = i;
 		int l = 2 * i + 1;
 		int r = 2 * i + 2;

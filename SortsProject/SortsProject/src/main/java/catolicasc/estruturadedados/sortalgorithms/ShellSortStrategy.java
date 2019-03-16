@@ -1,7 +1,7 @@
 package catolicasc.estruturadedados.sortalgorithms;
 
 /**
- * Ordena usando o método da seleção
+ * Ordena usando o método ShellSort
  * 
  * @author Glauco Vinicius Scheffel
  */

@@ -8,6 +8,10 @@ import java.util.Stack;
  * 
  * javarevisited.blogspot.com/2016/09/iterative-quicksort-example-in-java-without-recursion.html#ixzz5i0V1Fj00
  * 
+ * http://www.sonic.net/~jddarcy/Research/cs339-quicksort.pdf
+ * 
+ * http://www.java67.com/2014/07/quicksort-algorithm-in-java-in-place-example.html
+ * 
  * @author Glauco Vinicius Scheffel
  */
 public class QuickSortStrategy extends AbstractSortStrategy {
